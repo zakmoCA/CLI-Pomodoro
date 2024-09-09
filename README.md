@@ -1,6 +1,5 @@
 # [My App Repo (GitHub)](https://github.com/zakmoCA/ZakeriyaMohamed_T1A3)
 # [My Project Management (Trello)](https://trello.com/invite/b/0EUM1gBZ/ATTIe34c9fe163d3046c50de67b75f7ade7735039F3D/t1a3)
-# [My Presentation](https://youtu.be/t4V7LLq0rW8)
 
 # Table of Contents
 
@@ -36,7 +35,6 @@
 
 # Sources
 
-[Playsound library](https://pypi.org/project/playsound/)
 
 [Python 'datetime' module](https://docs.python.org/3/library/datetime.html)
 
@@ -44,13 +42,13 @@
 
 [Python 'os' module](https://docs.python.org/3/library/os.html)
 
+[Python chime library](https://pypi.org/project/chime/)
+
 [Python 'unittest' framework](https://docs.python.org/3/library/unittest.html)
 
 [Python unittest.mock](https://docs.python.org/3/library/unittest.mock.html)
 
 [Understanding patching and mocking](https://medium.com/geekculture/right-way-to-test-mock-and-patch-in-python-b02138fc5040)
-
-[Getting absolute path in Python](https://docs.python.org/3/library/os.path.html)
 
 [Python divmod function](https://www.programiz.com/python-programming/methods/built-in/divmod)
 
@@ -72,40 +70,44 @@ My Pomodoro applicaiton should perform the basic functions of a pomodoro timer a
 - Give an alert when work and break periods are over
 
 ## Project Management
+
 ### Initial Outline
 My Initial project outline was done on Asana but I then transitioned to Trello. Below you will see a high level overview of the key components of involved in completing the command line application and assignment. 
 
 ![Initial Outline in Asana](/docs/Day1-Asana.png)
 
 ### End of First Day
-Once starting the assignment, I transitioned to Trello and developed a more granular implementation plan, complete with checklists for the appropriate items (features/tests), along with deadlines for the key deliverables. By the end of day 1, all the core functionality and testing of the application was complete, although I was yet to expand upon the core functionality to the extent I would want the finished product to have. I believed some of this would come to me as I worked on the application, and indeed feature 4 did as a result.
-### Day 1 Trello Board
+
+#### Day 1 Trello Board
+
 ![Project Board end of Day 1](/docs/end-of-day-1.png)
 
+Once starting the assignment, I transitioned to Trello and developed a more granular implementation plan, complete with checklists for the appropriate items (features/tests), along with deadlines for the key deliverables. By the end of day 1, all the core functionality and testing of the application was complete, although I was yet to expand upon the core functionality to the extent I would want the finished product to have. I believed some of this would come to me as I worked on the application, and indeed feature 4 did as a result.
+
+
 ### End of Second Day
-My initial projections for deadlines were not met, as I was running a little late with some features after my second day of working on the assignment. This was somewhat expected as I was already running behind due to extenuating circumstances and I expected timelines to be dynamic as a result. However, because of the prioritisation of the key features, and having already implemented the aspects of the assignment which required greater amounts of reading/learning/cognitive overhead, this could be made up for by end of day 3.
-### Day 2 Trello Board
+
+#### Day 2 Trello Board
+
 ![Project Board end of Day 2](/docs/end-of-day2.png)
 
-### End of Third Day
+My initial projections for deadlines were not met due to both illness and scope creep. This began to teach me the importance of discipline in sticking to requirements and not expanding scope ad-hoc once clear requirements have been decided. 
+
+
+### Final Day
+
+### Final day
+
+![Project Board end of day 3](/docs/end-of-day3.png)
 
 By the end of day 3 I updated my README for all the relevant important information, along with beginning to wrap up my README. What was completed;
+- All features
 - Bash script
-- Most of my alert feature
-- Cycle length feature
 - Updated tests to reflect new features
-- Began working on presentation plan
-
-As usual, the more urgent tasks were colour coded orange in my Trello board.
-
-
-### Day 3 Trello Board
-![Project Board end of final day]()
+- Began and completed project presentation slides and video 
 
 ### End of Final Day
 
-
-### Final Day Trello Board
 ![Project Board end of final day](/docs/final-day-board.png)
 
 
@@ -140,7 +142,7 @@ The pomodoro's task name, start time, end time, and duration are written to a CS
 
 ## Alert when work/break times are over
 
-A distinct sound alert is played at the start of a work, and either break periods to alert the user should they not be viewing their terminal.
+A distinct sound alert is played using the `chime` library at the start of a work, and either break periods to alert the user should they not be viewing their terminal.
 
 # Features and Checklist Items
 ## General Outline
@@ -225,16 +227,6 @@ Like other command-line programs, the user can also abort this program using 'Ct
 
 This allows us to integrate the KeyboardInterrupt into our application by ensuring the pomodoro data is still recorded should the user want to abort the program.
 
-### Feature 5: Alerts For Start of Work And Break Times
-
-The checklist for the Alerts feature is below.
-![Feature 5 - Alerts for start of work and break times](/docs/alerts.png)
-
-The last feature is an important feature for any timer application; a way to alert the user when the timer is up. This is done by playing alert sounds, which are stored locally as .wav files. 
-
-The playsound and os libraries were used for this feature. This feature was seamless to integrate into the timer functionality of the application in the run_pomodoro function:
-- The 'os' module's 'path' functions were used to create an absolute path for the sound files, when the application was executed from the bash script originally an error was raised, as the bash script is not in my src directory
-- The playsound function is called at the end of each timer in the run_pomodoro function, and it executes a .wav file which contains the alert sound
 
 # Tests
 
@@ -282,24 +274,16 @@ The second test checks that the start() function correctly writes our data to th
 Due to the dynamic nature of the data being written the csv file (timestamps), I don't believe there is a simple way to assert that our CSV data matches exactly what we would anticipate. However the above test virtually guarantees that our data is being written correctly by checking the structure and format of the written data.
 
 
-
-
-
-
-
-
 # Help Documentation
-## System And Hardware Requirements
-This is a very simple application, with any computer or laptop running Python 3 being able to run the application. Python 3 needs to be installed if not already.
 
-## Dependencies
-
-A list of dependencies can be found in the file requirements.txt.
+This was an assessment I built during my Coder Academy course fullstack web-development course in 2023. It is based on 
+the [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique), a time-management technique which breaks work 
+into intervals (usually of 25 minutes) seperated by short breaks, and a long break after a set number of intervals.
 
 ## Installation Steps
 
 ### Python Version
-The first step is to check which python version, if any, is on your system. Many operating systems have at least Python 2 installed, but this application requires a Python 3 version of 3.11.3 and higher. This can be checked by opening the Terminal (Command Line) and typing the following command:
+This application requires a Python 3 version of 3.11.3 and higher. This can be checked by entering the following command in your terminal (command-line):
 
     python3 --version
 
@@ -318,26 +302,26 @@ Open up Homebrew in your terminal and enter the following command:
 #### Windows
 Visit official [Python website](https://www.python.org/downloads/)
 
-
-
-
-If you have Python version 3.11.3 or higher already installed, in your terminal, make a new directory in a location of your choosing and name of your choosing, I am calling mine 'PomodoroApp'.
-
-    mkdir PomodoroApp
+If you have Python version 3.11.3 or higher already installed, in your terminal, navigate to the 
+directory you would like to clone this repo into.
 
 Inside this directory, run the following command in order to clone the GitHub Pomodro Application.
 
-    git clone https://github.com/zakmoCA/ZakeriyaMohamed_T1A3.git
+    git clone https://github.com/zakmoCA/CLI-Pomodoro.git
 
-Once the repository has been cloned locally to your machine, enter the following command in the root directory of the repository, it will add the appropriate execute persmissions.
+Once the repository has been cloned locally to your machine, navigate to the repo's root.
+
+    cd CLI-Pomodoro
+
+Now that you are in the root directory, enter the following command, it will add the appropriate execute persmissions.
 
     chmod +x setup.sh
 
-Finally, to run the application, proceed by entering the following command.
+Finally, to run the application, enter the following command.
 
     ./setup.sh
 
-To exit the pomodoro early simply use 'Ctrl/Cmd' + 'C'. The data will still be written to the csv file.
+
 
 
 

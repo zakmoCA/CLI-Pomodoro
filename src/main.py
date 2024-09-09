@@ -1,4 +1,4 @@
-from start_pomodoro import start
+from start_pomodoro import StartPomodoro
 
-# Run application
-start()
+session = StartPomodoro()
+session.start()
